@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+/* Enable class-based dark mode (toggled via the `dark` class on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    /* Global interface font — Plus Jakarta Sans */
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Reserved for quote text only — Playfair Display */
+    --font-serif: 'Playfair Display', ui-serif, Georgia, 'Times New Roman', serif;
+
+         /* Tuwaiq club theme */
+    --color-tuwaiq-purple: #432a80;
+    --color-tuwaiq-purple-light: #53398f;
+    --color-tuwaiq-orange: #f2a54a;
+    --color-tuwaiq-teal: #4fc9b0;
+    --color-tuwaiq-text: #ece8f6;
+    --color-white: #ffffff;
+
+    /* QuoteIt theme — Light */
+    --color-quote-bg-light: #f3e8d8;
+    --color-quote-card-light: #fff9ee;
+    --color-quote-text-primary-light: #16201e;
+    --color-quote-text-secondary-light: #5c6b66;
+    --color-quote-border-light: #e2d2bc;
+
+    /* QuoteIt theme — Dark */
+    --color-quote-bg-dark: #16201e;
+    --color-quote-card-dark: #1e2d2b;
+    --color-quote-text-primary-dark: #f3e8d8;
+    --color-quote-text-secondary-dark: #a3b0a9;
+    --color-quote-border-dark: #2a3c38;
+
+    /* QuoteIt accent — auto-adapts in dark mode (see the .dark override below) */
+    --color-quote-accent: #d87a4a;
+    --color-quote-accent-hover: #c46a3d;
+}
+
+/* Dark-mode accent override: utilities like bg-quote-accent read this variable,
+   so overriding it here makes `bg-quote-accent` work in both themes. */
+.dark {
+    --color-quote-accent: #e88a58;
+    --color-quote-accent-hover: #d47a44;
+}
+@layer components {
+   .btn-primary {
+        @apply rounded-2xl bg-tuwaiq-purple px-6 py-3 text-lg font-medium text-white shadow-md transition hover:bg-tuwaiq-purple-light focus:outline-none focus-visible:ring-4 focus-visible:ring-tuwaiq-purple/30
+
+    }
+    .btn-secondary {
+        @apply rounded-2xl bg-tuwaiq-orange px-5 py-2 font-medium text-tuwaiq-purple shadow-md transition hover:opacity-90;
+    }
+    .label {
+        @apply mb-1 block font-semibold text-quote-text-primary-light dark:text-quote-text-primary-dark;
+    }
+    .input {
+        @apply w-full rounded-lg border outline-none border-quote-border-light bg-quote-bg-light px-4 py-2 text-quote-text-primary-light placeholder-quote-text-secondary-light transition-colors duration-300 focus:ring focus:ring-quote-accent/30 dark:border-quote-border-dark dark:bg-quote-bg-dark dark:text-quote-text-primary-dark dark:placeholder-quote-text-secondary-dark;
+    }
+}
+.site-name {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+
+    background: linear-gradient(90deg,#4fc9b0,#938BB8,#f2a54a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.site-name:hover {
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+
